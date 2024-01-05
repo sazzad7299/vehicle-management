@@ -1,9 +1,14 @@
 /.phpunit.cache
 /node_modules
-/public/build
 /public/hot
 /public/storage
+/public/upload
+/public/build
+/public/vendor/telescope
+/public/images/
+/resources/js/bootstrap.js
 /storage/*.key
+/DB/amarlodge_pharmacy.sql
 /vendor
 .env
 .env.backup

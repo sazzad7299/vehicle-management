@@ -3,20 +3,27 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\CreatedUpdatedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
+    use CreatedUpdatedBy,HasApiTokens, HasFactory,  Notifiable;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        $logOptions = new LogOptions();
+
+        $logOptions->logName = 'user_log';
+        $logOptions->logOnly(['name', 'email']);
+        // Add other options as needed
+
+        return $logOptions;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -24,9 +31,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'pharmacy_id',
         'name',
         'email',
+        'phone',
         'password',
+        'user_status',
+        'country_id',
+        'division_id',
+        'district_id',
+        'upazilas_id',
+        'union_id',
+        'zip_code',
+        'street_address',
+        'image',
     ];
 
     /**
@@ -37,8 +55,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -50,12 +66,36 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, ModelHasRole::class, 'model_id', 'role_id');
+    }
+
+    public function pharmacy()
+    {
+        return $this->belongsTo(Pharmacy::class, 'pharmacy_id', 'id')->withDefault();
+    }
+
+    public function hasPermission($permissionName)
+    {
+        foreach ($this->roles as $role) {
+            foreach ($role->permissions as $permission) {
+                if ($permission->name === $permissionName) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public function user_membership()
+    {
+        return $this->hasMany(Subscription::class, 'pharmacy_id', 'pharmacy_id');
+    }
+
+    public function scopeSearch($query, $request)
+    {
+        return $query->where('name', 'LIKE', '%'.$request.'%');
+    }
 }

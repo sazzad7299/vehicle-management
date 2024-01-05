@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +12,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Artisan::call('BangladeshGeocode:setup');
+        $this->call([
+            UserSeeder::class,
+            PharmacySeeder::class,
+            ManufacturerSeeder::class,
+            StrengthSeeder::class,
+            CategorySeeder::class,
+            UnitSeeder::class,
+            LeafSeeder::class,
+            TypeSeeder::class,
+            ShelfNumberSeeder::class,
+            SupplierSeeder::class,
+            MedicineSeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            // CashInOutSeeder::class,
+        ]);
     }
 }

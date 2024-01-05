@@ -13,6 +13,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->command('activitylog:clean')->daily();
+        $schedule->command('activitylog:cleanup')->daily();
+
     }
 
     /**
@@ -24,4 +27,10 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    // app/Console/Kernel.php
+
+    protected $commands = [
+        // Other commands...
+        \App\Console\Commands\CleanupActivityLog::class,
+    ];
 }

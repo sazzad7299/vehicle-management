@@ -1,0 +1,21 @@
+{
+    "name": "Pharmacy",
+    "short_name": "PH",
+    "start_url": "/",
+    "background_color": "#FF6C2C",
+    "description": "LPT",
+    "display": "standalone",
+    "theme_color": "#FF6C2C",
+    "icons": [
+      {
+        "src": "/logo.png",
+        "sizes": "171x171",
+        "type": "image/png"
+      },
+      {
+        "src": "/logo2.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
