@@ -2,7 +2,7 @@
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
             <router-link :to="{ name: 'dashboard' }" class="app-brand-link">
-                <span class="app-brand-text demo menu-text fw-bolder ms-2  text-capitalize">MyPharmacity</span>
+                <span class="app-brand-text demo menu-text fw-bolder ms-2  text-capitalize">Dashboard</span>
             </router-link>
             <a @click="sidebarToggle" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                 <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -143,7 +143,7 @@
                 class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-capsule"></i>
-                    <div data-i18n="Invoice">Medicine</div>
+                    <div data-i18n="Invoice">Vehicles   </div>
                 </a>
                 <ul class="menu-sub">
                     <li v-if="hasPermission('medicine.stock')" class="menu-item"
@@ -157,35 +157,35 @@
                         :class="$route.name === 'medicine.create' ? 'active' : ''">
                         <router-link :to="{ name: 'medicine.create' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
-                            Add Medicine
+                            Add Vehicle
                         </router-link>
                     </li>
                     <li v-if="hasPermission('medicine.index')" class="menu-item"
                         :class="$route.name === 'medicine.index' ? 'active' : ''">
                         <router-link :to="{ name: 'medicine.index' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
-                            Medicine List
+                            Vehicle List
                         </router-link>
                     </li>
                     <li v-if="hasPermission('category.index') || hasPermission('category.list') || hasPermission('category.create') || hasPermission('category.view')"
                         class="menu-item" :class="$route.name === 'category.index' ? 'active' : ''">
                         <router-link :to="{ name: 'category.index' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
-                            Categories
+                            Department
                         </router-link>
                     </li>
                     <li v-if="hasPermission('unit.index') || hasPermission('unit.list') || hasPermission('unit.create') || hasPermission('unit.view')"
                         class="menu-item" :class="$route.name === 'unit.index' ? 'active' : ''">
                         <router-link :to="{ name: 'unit.index' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
-                            Units
+                            RTA OFFICE
                         </router-link>
                     </li>
                     <li v-if="hasPermission('leaf.index') || hasPermission('leaf.list') || hasPermission('leaf.create') || hasPermission('leaf.view')"
                         class="menu-item" :class="$route.name === 'leaf.index' ? 'active' : ''">
                         <router-link :to="{ name: 'leaf.index' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
-                            Leaf
+                            Ownership
                         </router-link>
                     </li>
                     <li v-if="hasPermission('type.index') || hasPermission('type.list') || hasPermission('type.create') || hasPermission('type.view')"
@@ -242,7 +242,7 @@
                 </ul>
             </li>
             <li class="menu-item"
-                v-if="hasPermission('supplier') || hasPermission('supplier.index') || hasPermission('supplier.create') || hasPermission('supplier.view') || hasPermission('supplier.view')">
+                v-if="hasPermission('supplier.index') || hasPermission('supplier.create') || hasPermission('supplier.view') || hasPermission('supplier.view')">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bxs-user-account"></i>
                     <div data-i18n="Invoice">Suppliers</div>
@@ -268,21 +268,21 @@
                 v-if="hasPermission('manufacturer') || hasPermission('manufacturer.index') || hasPermission('manufacturer.create') || hasPermission('manufacturer.edit') || hasPermission('manufacturer.delete') || hasPermission('manufacturer.view')">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-sitemap"></i>
-                    <div data-i18n="Invoice">Manufacturesrs</div>
+                    <div data-i18n="Invoice">Drivers</div>
                 </a>
                 <ul class="menu-sub">
                     <li v-if="hasPermission('manufacturer.create')" class="menu-item"
                         :class="$route.name === 'manufacturer.create' ? 'active' : ''">
                         <router-link :to="{ name: 'manufacturer.create' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
-                            Add Manufacturesr
+                            Add Driver
                         </router-link>
                     </li>
                     <li v-if="hasPermission('manufacturer.index') || hasPermission('manufacturer.edit') || hasPermission('manufacturer.delete') || hasPermission('manufacturer.view')"
                         class="menu-item" :class="$route.name === 'manufacturer.index' ? 'active' : ''">
                         <router-link :to="{ name: 'manufacturer.index' }" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
-                            Manufacturesrs List
+                            Driver List
                         </router-link>
                     </li>
                 </ul>
@@ -347,6 +347,13 @@
                     <div data-i18n="Invoice">Reports</div>
                 </a>
                 <ul class="menu-sub">
+                    <li v-if="hasPermission('reports.medicines')" class="menu-item"
+                        :class="$route.name === 'reports.medicines' ? 'active' : ''">
+                        <router-link :to="{ name: 'reports.medicines' }" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-report'></i>
+                            Vehicles
+                        </router-link>
+                    </li>
                     <li class="menu-item"
                         v-if="hasPermission('reports.sale') || hasPermission('reports.sale-payment') || hasPermission('reports.sale-return')">
                         <router class="menu-link menu-toggle">
@@ -499,7 +506,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" v-if="hasPermission('subscription.index') || hasPermission('plan.myplan')">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-check-shield"></i>
                     <div data-i18n="Invoice">Subscription</div>
@@ -521,7 +528,7 @@
                     </li>
 
                 </ul>
-            </li> 
+            </li>
         </ul>
     </aside>
 </template>

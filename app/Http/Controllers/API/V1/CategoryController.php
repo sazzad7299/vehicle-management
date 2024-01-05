@@ -22,7 +22,7 @@ class CategoryController extends Controller
             $categories = $category->paginate(request()->get('per_page', 10));
         }
 
-        return $this->respondSuccess($categories, 'Category Retrieved Successfully');
+        return $this->respondSuccess($categories, 'Department Retrieved Successfully');
     }
 
     public function create()
@@ -40,9 +40,9 @@ class CategoryController extends Controller
             }
             $category->fill($requestedData)->save();
 
-            return $this->respondCreated('Category Updated Successfully');
+            return $this->respondCreated('Department Updated Successfully');
         } catch (\Throwable $e) {
-            return $this->respondError($e, 'Category Updated Successfully');
+            return $this->respondError($e, 'Department Updated Successfully');
 
         }
     }

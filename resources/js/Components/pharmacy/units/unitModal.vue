@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel2">{{ mode === 'add' ? 'Add Unit' : 'Edit Unit' }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel2">{{ mode === 'add' ? 'Add RTA' : 'Edit RTA' }}</h5>
                     <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
                 </div>
                 <form @submit.prevent="handleSubmit" @keydown="allErrors.clear($event.target.name)">
@@ -20,8 +20,8 @@
                         </div>
                         <div class="row g-2">
                             <div class="col-8 mb-0">
-                                <label class="form-label" for="emailSmall">Note</label>
-                                <input type="text" class="form-control" id="emailSmall" placeholder="Notes"
+                                <label class="form-label" for="emailSmall">Address</label>
+                                <input type="text" class="form-control" id="emailSmall" placeholder="Address"
                                     v-model="unit.description" name="description" />
                                     <span v-if="this.allErrors.has('description')" class="error text-danger fw-semibold mt-3"
                                                 v-text="this.allErrors.get('description')">

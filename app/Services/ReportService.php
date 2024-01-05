@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Cost;
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\Medicine;
 use App\Models\Purchase;
 use App\Models\PurchaseDetails;
 use App\Models\PurchasePayment;
@@ -23,80 +24,75 @@ class ReportService
         $summary = [];
         $condition = $request->input('condition', 'all');
 
-        $sale = Sale::query();
-        if ($condition === 'today') {
-            $sale->whereDate('created_at', Carbon::today());
-        } elseif ($condition === 'thisMonth') {
-            $sale->whereYear('created_at', Carbon::now()->year)
-                ->whereMonth('created_at', Carbon::now()->month);
-        }
-        $sale = $sale->sum('total');
+        // $sale = Sale::query();
+        // if ($condition === 'today') {
+        //     $sale->whereDate('created_at', Carbon::today());
+        // } elseif ($condition === 'thisMonth') {
+        //     $sale->whereYear('created_at', Carbon::now()->year)
+        //         ->whereMonth('created_at', Carbon::now()->month);
+        // }
+        // $sale = $sale->sum('total');
 
-        $summary[] = [
-            'name' => 'Sale',
-            'amount' => $sale,
-        ];
-        $saleRerturn = SaleReturn::query()
-            ->sum('price');
-        $summary[] = [
-            'name' => 'Sale Return',
-            'amount' => $saleRerturn,
-        ];
+        // $summary[] = [
+        //     'name' => 'Sale',
+        //     'amount' => $sale,
+        // ];
+        // $saleRerturn = SaleReturn::query()
+        //     ->sum('price');
+        // $summary[] = [
+        //     'name' => 'Sale Return',
+        //     'amount' => $saleRerturn,
+        // ];
 
-        $SalePayment = SalePayment::query()
-            ->sum('paid');
+        // $SalePayment = SalePayment::query()
+        //     ->sum('paid');
 
-        $summary[] = [
-            'name' => 'Sale Payment',
-            'amount' => $SalePayment,
-        ];
-        $SalereturnAmount = SaleReturn::query()
-            ->sum('returnAmount');
+        // $summary[] = [
+        //     'name' => 'Sale Payment',
+        //     'amount' => $SalePayment,
+        // ];
+        // $SalereturnAmount = SaleReturn::query()
+        //     ->sum('returnAmount');
 
-        $summary[] = [
-            'name' => 'Sale Return Payment',
-            'amount' => $SalereturnAmount,
-        ];
+        // $summary[] = [
+        //     'name' => 'Sale Return Payment',
+        //     'amount' => $SalereturnAmount,
+        // ];
 
-        //Purchase
-        $purchase = Purchase::query()
-            ->sum('total');
-        $summary[] = [
-            'name' => 'Purchase',
-            'amount' => $purchase,
-        ];
-        $PurchaseReturn = PurchaseReturn::query()
-            ->sum('price');
-        $summary[] = [
-            'name' => 'Purchase Return',
-            'amount' => $PurchaseReturn,
-        ];
-        $PurchasePayment = PurchasePayment::query()
-            ->sum('paid');
+        // //Purchase
+        // $purchase = Purchase::query()
+        //     ->sum('total');
+        // $summary[] = [
+        //     'name' => 'Purchase',
+        //     'amount' => $purchase,
+        // ];
+        // $PurchaseReturn = PurchaseReturn::query()
+        //     ->sum('price');
+        // $summary[] = [
+        //     'name' => 'Purchase Return',
+        //     'amount' => $PurchaseReturn,
+        // ];
+        // $PurchasePayment = PurchasePayment::query()
+        //     ->sum('paid');
 
-        $summary[] = [
-            'name' => 'Purchase Payment',
-            'amount' => $PurchasePayment,
-        ];
+        // $summary[] = [
+        //     'name' => 'Purchase Payment',
+        //     'amount' => $PurchasePayment,
+        // ];
 
-        $PurchaseReturnAmount = PurchaseReturn::query()
-            ->sum('returnAmount');
-        $summary[] = [
-            'name' => 'Purchase Return Amount',
-            'amount' => $PurchaseReturnAmount,
-        ];
-        $cost = Cost::query()
-            ->sum('amount');
-        $summary[] = [
-            'name' => 'Cost',
-            'amount' => $cost,
-        ];
-        $customer = Customer::query()
-            ->count();
-        $summary[] = [
-            'name' => 'Customer',
-            'amount' => $customer,
-        ];
+        // $PurchaseReturnAmount = PurchaseReturn::query()
+        //     ->sum('returnAmount');
+        // $summary[] = [
+        //     'name' => 'Purchase Return Amount',
+        //     'amount' => $PurchaseReturnAmount,
+        // ];
+
+        // $customer = Customer::query()
+        //     ->count();
+        // $summary[] = [
+        //     'name' => 'Customer',
+        //     'amount' => $customer,
+        // ];
         $employee = Employee::query()
             ->count();
         $summary[] = [
@@ -112,6 +108,22 @@ class ReportService
         $summary[] = [
             'name' => 'Users',
             'amount' => $user,
+        ];
+        $medicine = Medicine::query();
+        if (auth()->user()->pharmacy_id != null) {
+            $user = $user->where('pharmacy_id', auth()->user()->pharmacy_id);
+        }
+
+        $medicine = $medicine->count();
+        $summary[] = [
+            'name' => 'Vehicles',
+            'amount' => $medicine,
+        ];
+        $cost = Cost::query()
+            ->sum('amount');
+        $summary[] = [
+            'name' => 'Cost',
+            'amount' => $cost,
         ];
 
         return $summary;

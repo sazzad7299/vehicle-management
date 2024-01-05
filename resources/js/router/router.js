@@ -17,7 +17,7 @@ const checkPermissions = (to, permission) => {
     return { name: "dashboard" };
   } else {
     if (to.meta && to.meta.title) {
-      document.title = to.meta.title + " | Pharmacy";
+      document.title = to.meta.title + " | Vehicle";
     }
     return true;
   }
@@ -62,8 +62,18 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to) => {
   if (to.meta && to.meta.title) {
-    document.title = to.meta.title + " | Pharmacy";
+    document.title = to.meta.title + " | MyVehicle";
   }
 });
+// Wildcard route for 404
+router.addRoute({
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+         component: () => import('../components/errors/404.vue'),
+        meta: {
+            title: '404',
+            isGuest: true
+        } // Replace with the actual component for your 404 page
+  });
 
 export default router;

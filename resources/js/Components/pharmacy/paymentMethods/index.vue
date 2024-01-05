@@ -19,7 +19,7 @@
                                 </label>
                             </div>
                             <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3"
-                                v-if="hasPermission('payment-method.add')">
+                               >
                                 <div class="dt-buttons btn-group flex-wrap">
                                     <button class="btn btn-secondary btn-primary" type="button" @click=" openAddModal ">
                                         <span>

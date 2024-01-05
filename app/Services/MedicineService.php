@@ -19,6 +19,8 @@ class MedicineService
             ->latest();
         if ($request->has('paginate')) {
             return $medicine->select(['id', 'name'])->get();
+        } elseif ($request->has('report')) {
+            return $medicine->get();
         } else {
             return $medicine->paginate(request()->get('per_page', 10));
         }

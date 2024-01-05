@@ -2,7 +2,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
             <span class="text-muted fw-light">{{ formTitle }} / </span>
-            <router-link :to="{ name: 'manufacturer.index' }">Manufacturer List</router-link>
+            <router-link :to="{ name: 'manufacturer.index' }">Driver List</router-link>
         </h4>
         <div class="row justify-content-md-center">
             <div class="col-md-12">
@@ -90,7 +90,7 @@ import Errors from "../../errors/errors";
 import { handleErrorResponse } from '../../errors/errorHandler.js';
 import { handleSuccessResponse } from '../../errors/successHandler.js';
 export default {
-    name: "Create/Update Manufacturer",
+    name: "Create/Update Driver",
     props: {
         isEdit: {
             type: Boolean,
@@ -100,7 +100,7 @@ export default {
     data() {
         return {
             allErrors: new Errors(),
-            formTitle: this.isEdit ? "Update Manufacturer" : "Add Manufacturer",
+            formTitle: this.isEdit ? "Update Driver" : "Add Driver",
             manufacturer: {
                 name: '',
                 phone: '',

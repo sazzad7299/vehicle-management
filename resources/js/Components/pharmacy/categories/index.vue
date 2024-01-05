@@ -1,10 +1,5 @@
 <template>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <!-- <h4 class="fw-bold py-3 mb-4 "><span class="text-muted fw-light"></span>
-            <router-link :to="{ name: 'customer.index' }">
-                Customer List
-            </router-link>
-        </h4> -->
         <div class="row justify-content-md-center">
             <div class="col-md-12">
                 <category-form v-if="hasPermission('category.create') || hasPermission('category.edit')" :category="selectedCategory"

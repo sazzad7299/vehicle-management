@@ -1,6 +1,6 @@
 <template>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Units /</span>Unit List</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">RTA /</span>RTA List</h4>
         <div class="card">
             <div class="card-datatable table-responsive">
                 <div class="dataTables_wrapper dt-bootstrap5 no-footer">
@@ -22,7 +22,7 @@
                                 <button class="btn btn-secondary btn-primary" type="button"  @click="openAddModal">
                                     <span>
                                         <i class="bx bx-plus me-md-1"></i>
-                                        <span class="d-md-inline-block d-none">Add Unit</span>
+                                        <span class="d-md-inline-block d-none">Add RTA</span>
                                     </span>
                                 </button>
                                 </div>
@@ -43,7 +43,7 @@
                             <tr>
                                 <th>Sl</th>
                                 <th>Name</th>
-                                <th>Note</th>
+                                <th>Address</th>
                                 <th>Status</th>
                                 <th v-if="hasPermission('unit.delete') || hasPermission('unit.edit')">Action</th>
 
@@ -159,7 +159,7 @@ export default {
                 })
         },
         softDeleteUnit(unit) {
-            const confirmed = window.confirm('Are you sure you want to delete this Unit?');
+            const confirmed = window.confirm('Are you sure you want to delete this RTA?');
             if (confirmed) {
                 this.loader(true);
                 axios.delete('unit/' + unit.id)
