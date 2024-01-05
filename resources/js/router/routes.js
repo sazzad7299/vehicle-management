@@ -64,17 +64,17 @@ let routes = [
             isGuest: true
         }
     },
+    // {
+    //     path: '/',
+    //     name: 'welcome',
+    //     component: () => import('../pages/terms-and-conditions.vue'),
+    //     meta: {
+    //         title: 'Welcome to Pharmacy',
+    //         isGuest: true
+    //     }
+    // },
     {
         path: '/',
-        name: 'welcome',
-        component: () => import('../pages/terms-and-conditions.vue'),
-        meta: {
-            title: 'Welcome to Pharmacy',
-            isGuest: true
-        }
-    },
-    {
-        path: '/dashboard',
         name: 'app',
         // redirect: {name: 'dashboard'},
         component: () => import('../pages/app.vue'),
