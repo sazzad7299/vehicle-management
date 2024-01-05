@@ -1,7 +1,7 @@
 <template>
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Leaf /</span>Leaf List
+            <span class="text-muted fw-light">Ownership /</span>Ownership List
         </h4>
         <div class="card">
             <div class="card-datatable table-responsive">
@@ -23,7 +23,7 @@
                                     <button class="btn btn-secondary btn-primary" type="button" @click="openAddModal">
                                         <span>
                                             <i class="bx bx-plus me-md-1"></i>
-                                            <span class="d-md-inline-block d-none">Add Leaf</span>
+                                            <span class="d-md-inline-block d-none">Add Ownership</span>
                                         </span>
                                     </button>
                                 </div>
@@ -43,8 +43,8 @@
                         <thead>
                             <tr>
                                 <th>Sl</th>
-                                <th>Leaf Type</th>
-                                <th>Number Per Box</th>
+                                <th>Name</th>
+                                <th>Contant No</th>
                                 <th>Status</th>
                                 <th v-if="hasPermission('leaf.delete') || hasPermission('leaf.edit')">Action</th>
                             </tr>
@@ -163,7 +163,7 @@ export default {
         },
         softDeleteUnit(unit) {
             const confirmed = window.confirm(
-                "Are you sure you want to delete this Leaf?"
+                "Are you sure you want to delete this Ownership?"
             );
             if (confirmed) {
                 this.loader(true);

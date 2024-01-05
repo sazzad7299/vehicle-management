@@ -30,7 +30,7 @@ class MedicineController extends Controller
         $leaf = $this->medicine_service->index($request);
 
         //  return $leaf;
-        return $this->respondSuccess($leaf, 'Medicine Retrieved Successfully');
+        return $this->respondSuccess($leaf, 'Vehicles Retrieved Successfully');
     }
 
     public function create()
@@ -44,7 +44,7 @@ class MedicineController extends Controller
         try {
             $this->medicine_service->store($request, $medicine);
 
-            return $this->respondCreated($medicine, 'Medicine Insert Successfully!!!');
+            return $this->respondCreated($medicine, 'Vehicles Insert Successfully!!!');
         } catch (\Throwable $th) {
             return $this->respondError($th->getMessage());
         }
@@ -52,7 +52,7 @@ class MedicineController extends Controller
 
     public function show(Medicine $medicine)
     {
-        return $this->respondSuccess($medicine, 'Medicine Retrieved Successfully');
+        return $this->respondSuccess($medicine, 'Vehicles Retrieved Successfully');
     }
 
     public function edit(Medicine $medicine)
@@ -66,7 +66,7 @@ class MedicineController extends Controller
         try {
             $this->medicine_service->update($request, $medicine);
 
-            return $this->respondSuccess($medicine, 'Medicine Insert Successfully!!!');
+            return $this->respondSuccess($medicine, 'Vehicles Insert Successfully!!!');
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage());
         }
@@ -77,7 +77,7 @@ class MedicineController extends Controller
         try {
             $this->medicine_service->delete($medicine);
 
-            return $this->respondDelete('Medicine Deleted Successfully');
+            return $this->respondDelete('Vehicles Deleted Successfully');
         } catch (\Throwable $th) {
             return $this->respondError('Something Went wrong,Try Again!');
         }

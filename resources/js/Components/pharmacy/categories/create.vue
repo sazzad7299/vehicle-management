@@ -1,12 +1,12 @@
 <template>
     <div class="card mb-4">
-        <h5 class="card-header fw-bold">{{ category ? 'Update' : 'Add' }} Category</h5>
+        <h5 class="card-header fw-bold">{{ category ? 'Update' : 'Add' }} Department</h5>
         <div class="card-body">
             <form @submit.prevent="handleSubmit" @keydown="allErrors.clear($event.target.name)">
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-xs-12">
                         <div class="mb-3">
-                            <label class="form-label" for="basic-default-fullname">Category Name</label>
+                            <label class="form-label" for="basic-default-fullname">Department Name</label>
                             <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe"
                                 v-model="formData.name" />
                         </div>

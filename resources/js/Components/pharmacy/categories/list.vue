@@ -136,7 +136,7 @@ export default {
                 })
         },
         softDeleteCategory(category) {
-            const confirmed = window.confirm('Are you sure you want to delete this user?');
+            const confirmed = window.confirm('Are you sure you want to delete this Department?');
             if (confirmed) {
                 this.loader(true);
                 axios.delete('category/' + category.id)

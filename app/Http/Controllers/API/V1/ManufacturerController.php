@@ -23,7 +23,7 @@ class ManufacturerController extends Controller
     {
         $manufacturer = $this->manufacturer->index($request);
 
-        return $this->respondSuccess($manufacturer, 'Manufacturer Retrieved Successfully');
+        return $this->respondSuccess($manufacturer, 'Driver Retrieved Successfully');
     }
 
     public function create()
@@ -36,18 +36,18 @@ class ManufacturerController extends Controller
         try {
             $this->manufacturer->store($request, $manufacturer);
 
-            return $this->respondCreated($manufacturer, 'Manufacturer Insert Successfully!!!');
+            return $this->respondCreated($manufacturer, 'Driver Insert Successfully!!!');
         } catch (\Throwable $th) {
             Log::info();
 
-            return $this->respondError('Manufacturer Insert Failed');
+            return $this->respondError('Driver Insert Failed');
         }
     }
 
     public function show(Manufacturer $manufacturer)
     {
 
-        return $this->respondSuccess($manufacturer, 'Manufacturer Retrieved Successfully');
+        return $this->respondSuccess($manufacturer, 'Driver Retrieved Successfully');
     }
 
     public function edit(Manufacturer $manufacturer)
@@ -60,7 +60,7 @@ class ManufacturerController extends Controller
         try {
             $this->manufacturer->update($request, $manufacturer);
 
-            return $this->respondCreated($manufacturer, 'Manufacturer Update Successfully!!!');
+            return $this->respondCreated($manufacturer, 'Driver Update Successfully!!!');
         } catch (\Throwable $th) {
             return $this->respondError('Something Went wrong,Try Again!');
         }
@@ -71,7 +71,7 @@ class ManufacturerController extends Controller
         try {
             $this->manufacturer->delete($manufacturer);
 
-            return $this->respondDelete('Manufacturer Deleted Successfully');
+            return $this->respondDelete('Driver Deleted Successfully');
         } catch (\Throwable $th) {
             return $this->respondError('Something Went wrong,Try Again!');
         }

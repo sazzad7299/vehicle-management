@@ -2,7 +2,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">
             <span class="text-muted fw-light">{{ formTitle }} / </span>
-            <router-link :to="{ name: 'medicine.index' }">Medicine List</router-link>
+            <router-link :to="{ name: 'medicine.index' }">Vehicle List</router-link>
         </h4>
         <div class="row justify-content-md-center">
             <div class="col-md-12">
@@ -12,7 +12,7 @@
                         <form @submit.prevent="handleSubmit" @keydown="allErrors.clear($event.target.name)">
                             <div class="row">
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Barcode<span
+                                    <label class="form-label" for="basic-default-name">Model<span
                                             class="text-danger">*</span> </label>
                                     <input type="text" class="form-control" placeholder="Name" name="barcode"
                                         autocomplete="off" v-model="medicine.barcode">
@@ -30,7 +30,7 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Generic Name<span
+                                    <label class="form-label" for="basic-default-name">License Plate <span
                                             class="text-danger">*</span> </label>
                                     <input type="text" class="form-control" placeholder="Generic Name" name="generic"
                                         autocomplete="off" v-model="medicine.generic">
@@ -39,13 +39,13 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Category
+                                    <label class="form-label" for="basic-default-name">Department
                                         <span class="text-danger">*</span>
                                     </label>
                                     <v-select :options="categories"
                                               :label="'name'"
                                               name="category_id"
-                                              :placeholder="'Select Category'"
+                                              :placeholder="'Select Department'"
                                               :reduce="category => category.id"
                                               :loading="Loader.category"
                                               v-model="medicine.category_id"
@@ -57,7 +57,7 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Type<span
+                                    <label class="form-label" for="basic-default-name">Vehicle Type<span
                                         class="text-danger">*</span> </label>
                                     <v-select :options="types"
                                               :label="'name'"
@@ -74,12 +74,12 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Unit<span
+                                    <label class="form-label" for="basic-default-name">RTA Circle Office<span
                                         class="text-danger">*</span> </label>
                                     <v-select :options="units"
                                               :label="'name'"
                                               name="unit_id"
-                                              :placeholder="'Select Unit'"
+                                              :placeholder="'Select RTA'"
                                               :reduce="unit => unit.id"
                                               :loading="Loader.unit"
                                               v-model="medicine.unit_id"
@@ -91,12 +91,12 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Leaf<span
+                                    <label class="form-label" for="basic-default-name">Ownership<span
                                         class="text-danger">*</span> </label>
                                     <v-select :options="leaves"
                                               :label="'leaf_type'"
                                               name="leaf_id"
-                                              :placeholder="'Select Leaf'"
+                                              :placeholder="'Select Ownership'"
                                               :reduce="leaf => leaf.id"
                                               :loading="Loader.leaf"
                                               v-model="medicine.leaf_id"
@@ -109,12 +109,12 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-default-name">Manufacturer <span
+                                    <label class="form-label" for="basic-default-name">Driver<span
                                         class="text-danger">*</span> </label>
                                     <v-select :options="manufacturers"
                                               :label="'name'"
                                               name="manufacturer_id"
-                                              :placeholder="'Select Manufacturer'"
+                                              :placeholder="'Select Driver'"
                                               :reduce="manufacturer => manufacturer.id"
                                               :loading="Loader.manufacturer"
                                               v-model="medicine.manufacturer_id"
@@ -126,9 +126,9 @@
                                     </span>
                                 </div>
                                 <div class="mb-3 col-md-4">
-                                    <label class="form-label" for="basic-default-name">Description<span
+                                    <label class="form-label" for="basic-default-name">Expire Date<span
                                             class="text-danger">*</span> </label>
-                                    <input type="text" class="form-control" placeholder="Name" name="description"
+                                    <input type="date" class="form-control" placeholder="Name" name="description"
                                         autocomplete="off" v-model="medicine.description">
                                     <span v-if="this.allErrors.has('description')" class="error text-danger fw-semibold mt-3"
                                         v-text="this.allErrors.get('description')">
@@ -187,7 +187,7 @@ export default {
     data() {
         return {
             allErrors: new Errors(),
-            formTitle: this.isEdit ? "Update Medicine" : "Add Medicine",
+            formTitle: this.isEdit ? "Update Vehicle" : "Add Vehicle",
             medicine: {
                 barcode:'',
                 name:'',

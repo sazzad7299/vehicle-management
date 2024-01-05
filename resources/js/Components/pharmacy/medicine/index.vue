@@ -1,6 +1,6 @@
 <template>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Medicines /</span>Medicine List</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Driver /</span>Driver List</h4>
         <div class="card">
             <div class="card-datatable table-responsive">
                 <div class="dataTables_wrapper dt-bootstrap5 no-footer">
@@ -24,7 +24,7 @@
                                         <button class="btn btn-secondary btn-primary" type="button">
                                             <span>
                                                 <i class="bx bx-plus me-md-1"></i>
-                                                <span class="d-md-inline-block d-none">Add Medicine</span>
+                                                <span class="d-md-inline-block d-none">Add Driver</span>
                                             </span>
                                         </button>
                                     </router-link>
@@ -45,15 +45,16 @@
                         <thead>
                             <tr>
                                 <th>Sl</th>
-                                <th>Barcode</th>
+                                <th>Model</th>
                                 <th>Name</th>
-                                <th>Generic</th>
-                                <th>Manufacturer</th>
+                                <th>License</th>
+                                <th>Driver</th>
+                                <th>Expire at</th>
                                 <th  v-if="hasPermission('medicine.edit') || hasPermission('medicine.delete') ">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr :class="index % 2 === 0 ? 'odd' : 'even'" v-for="(medicine, index) in medicines.data">
+                            <tr :class="index % 2 === 0 ? 'odd' : 'even'" v-for="(medicine, index) in medicines.data" :key="medicine.id">
                                 <td class="fw-semibold">
                                     {{ medicines.from + index }}
                                 </td>
@@ -68,6 +69,9 @@
                                 </td>
                                 <td class="fw-semibold">
                                     {{ medicine.manufacturer.name }}
+                                </td>
+                                <td class="fw-semibold">
+                                    {{$filters.customFormat(medicine.description) }}
                                 </td>
                                 <td class="d-flex py-2px-2" v-if="hasPermission('medicine.edit') || hasPermission('medicine.delete') ">
                                     <div class="mx-2" v-if="hasPermission('medicine.edit')">
@@ -153,7 +157,7 @@ export default {
                 })
         },
         softDeleteMedicine(medicine) {
-            const confirmed = window.confirm('Are you sure to delete this Medicine?');
+            const confirmed = window.confirm('Are you sure to delete this Vehicle?');
             if (confirmed) {
                 this.loader(true);
                 axios.delete('medicine/' + medicine.id)

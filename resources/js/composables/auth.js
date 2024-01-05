@@ -34,7 +34,7 @@ export default function useAuth() {
             .then(async response => {
                 if (response.data.status === 201) {
                     toastr.success(response.data.message)
-                    
+
                     await loginUser(response.data.result)
                     await router.push({name: 'registersubscribe'});
                 }
@@ -117,6 +117,11 @@ export default function useAuth() {
             })
             .finally(() => processing.value = false)
     }
+    const showPassword = ref(false);
+
+    const togglePasswordVisibility = () => {
+        showPassword.value = !showPassword.value;
+    };
 
     return {
         loginForm,
@@ -124,6 +129,8 @@ export default function useAuth() {
         registerForm,
         validationErrors,
         processing,
+        showPassword,
+        togglePasswordVisibility,
         submitLogin,
         submitRegister,
         logout,

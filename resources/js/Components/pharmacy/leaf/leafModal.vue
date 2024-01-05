@@ -3,14 +3,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCenterTitle">{{ mode === 'add' ? 'Add Leaf' : 'Edit Leaf' }}</h5>
+                    <h5 class="modal-title" id="modalCenterTitle">{{ mode === 'add' ? 'Add Ownership' : 'Edit Ownership' }}</h5>
                     <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
                 </div>
                 <form @submit.prevent="handleSubmit" @keydown="allErrors.clear($event.target.name)">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col mb-3">
-                                <label for="nameSmall" class="form-label">Leaf Type</label>
+                                <label for="nameSmall" class="form-label">Name</label>
                                 <input type="text" v-model="unit.leaf_type" required class="form-control"
                                     placeholder="Type Name" name="leaf_type" />
                                     <span v-if="this.allErrors.has('leaf_type')" class="error text-danger fw-semibold mt-3"
@@ -20,7 +20,7 @@
                         </div>
                         <div class="row">
                             <div class="col mb-3">
-                                <label for="nameSmall" class="form-label">Number Per Box</label>
+                                <label for="nameSmall" class="form-label">Contant No</label>
                                 <input type="text" v-model="unit.number_per_box" required class="form-control"
                                     placeholder="Type Name" name="number_per_box" />
                                     <span v-if="this.allErrors.has('number_per_box')" class="error text-danger fw-semibold mt-3"

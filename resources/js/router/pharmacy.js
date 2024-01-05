@@ -1,6 +1,6 @@
 let pharmacy = [
   {
-    path: "/medicines",
+    path: "/driver",
     name: "medicine.index",
     component: () => import("../components/pharmacy/medicine/index.vue"),
     meta: {
@@ -13,16 +13,16 @@ let pharmacy = [
     name: "medicine.stock",
     component: () => import("../components/pharmacy/medicine/stock.vue"),
     meta: {
-      title: "Medicine List",
+      title: "driver List",
       requiresAuth: true,
     },
   },
   {
-    path: "/medicine/create",
+    path: "/driver/create",
     name: "medicine.create",
     component: () => import("../components/pharmacy/medicine/create.vue"),
     meta: {
-      title: "Add Medicine",
+      title: "Add driver",
       requiresAuth: true,
     },
     props: {
@@ -30,11 +30,11 @@ let pharmacy = [
     },
   },
   {
-    path: "/medicine/:id/edit",
+    path: "/driver/:id/edit",
     name: "medicine.edit",
     component: () => import("../components/pharmacy/medicine/create.vue"),
     meta: {
-      title: "Edit Medicine",
+      title: "Edit driver",
       requiresAuth: true,
     },
     props: {
@@ -410,6 +410,15 @@ let pharmacy = [
     },
   },
   //Reports
+  {
+    path: "reports/vehicles",
+    name: "reports.medicines",
+    component: () => import("../components/reports/Medicine.vue"),
+    meta: {
+      title: "Vehicles List",
+      requiresAuth: true,
+    },
+  },
   {
     path: "reports/purchase",
     name: "reports.purchase",

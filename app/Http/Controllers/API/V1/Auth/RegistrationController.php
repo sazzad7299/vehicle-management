@@ -43,7 +43,7 @@ class RegistrationController extends Controller
                 'name' => 'Cash',
                 'descirption' => 'Cash Drawer',
             ]);
-            $role = Role::query()->where('name', 'owner')->firstOrFail();
+            $role = Role::query()->where('name', 'Super Admin')->firstOrFail();
             $user->roles()
                 ->attach(
                     $role->id,

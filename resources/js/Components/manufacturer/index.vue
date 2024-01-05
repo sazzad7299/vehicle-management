@@ -1,6 +1,6 @@
 <template>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Manufacturers  /</span>Manufacturer List</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Driver  /</span>Driver List</h4>
         <div class="card">
             <div class="card-datatable table-responsive">
                 <div class="dataTables_wrapper dt-bootstrap5 no-footer">
@@ -24,7 +24,7 @@
                                         <button class="btn btn-secondary btn-primary" type="button">
                                             <span>
                                               <i class="bx bx-plus me-md-1"></i>
-                                              <span class="d-md-inline-block d-none">Add Manufacturer</span>
+                                              <span class="d-md-inline-block d-none">Add Driver</span>
                                             </span>
                                         </button>
                                     </router-link>
@@ -152,7 +152,7 @@ export default {
                 })
         },
         softDeleteUser(user) {
-            const confirmed = window.confirm('Are you sure you want to delete this Manufacturer?');
+            const confirmed = window.confirm('Are you sure you want to delete this Driver?');
             if (confirmed) {
                 this.loader(true);
                 axios.delete('manufacturer/' + user.id)
