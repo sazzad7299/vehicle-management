@@ -2,19 +2,19 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
 use App\Models\Cost;
-use App\Models\Sale;
-use App\Models\User;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Medicine;
 use App\Models\Purchase;
-use App\Models\SaleReturn;
-use App\Models\SalePayment;
-use App\Models\PurchaseReturn;
 use App\Models\PurchaseDetails;
 use App\Models\PurchasePayment;
+use App\Models\PurchaseReturn;
+use App\Models\Sale;
+use App\Models\SalePayment;
+use App\Models\SaleReturn;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
 class ReportService
@@ -125,6 +125,7 @@ class ReportService
             'name' => 'Cost',
             'amount' => $cost,
         ];
+
         return $summary;
     }
 
