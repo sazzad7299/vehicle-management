@@ -27,6 +27,6 @@
         "vue-perfect-scrollbar": "^0.2.1",
         "vue-router": "^4.2.1",
         "vue-select": "^4.0.0-beta.5",
-        "vue-sidebar-menu": "^5.2.8",
+        "vue-sidebar-menu": "^5.2.8"
     }
 }
