@@ -24,7 +24,6 @@ use App\Models\SalePayment;
 use App\Models\SaleReturn;
 use App\Models\Supplier;
 use App\Observers\GlobalObserve;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Telescope\TelescopeServiceProvider;
 
