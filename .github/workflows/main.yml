@@ -20,6 +20,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
           server: ftp.itsoftrain.com
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: sazzad7299@vehcal.itsoftrain.com
+          password: sazzad@7299
           server-dir: /vehcal.itsoftrain.com
