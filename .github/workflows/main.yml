@@ -22,4 +22,4 @@ jobs:
           server: ftp.itsoftrain.com
           username: sazzad7299@vehcal.itsoftrain.com
           password: sazzad@7299
-          server-dir: /vehcal.itsoftrain.com
+          server-dir: /vehcal.itsoftrain.com/
