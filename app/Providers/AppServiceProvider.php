@@ -47,28 +47,26 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Observe the model using the GlobalObserve class
-        if (Auth::user()) {
-            CashInOut::observe(GlobalObserve::class);
-            CashHistory::observe(GlobalObserve::class);
-            Category::observe(GlobalObserve::class);
-            Cost::observe(GlobalObserve::class);
-            CostCategory::observe(GlobalObserve::class);
-            Employee::observe(GlobalObserve::class);
-            EmployeeSalary::observe(GlobalObserve::class);
-            Leaf::observe(GlobalObserve::class);
-            Manufacturer::observe(GlobalObserve::class);
-            Medicine::observe(GlobalObserve::class);
-            PaymentMethod::observe(GlobalObserve::class);
-            Pharmacy::observe(GlobalObserve::class);
-            Plan::observe(GlobalObserve::class);
-            Sale::observe(GlobalObserve::class);
-            SalePayment::observe(GlobalObserve::class);
-            SaleReturn::observe(GlobalObserve::class);
-            Purchase::observe(GlobalObserve::class);
-            PurchasePayment::observe(GlobalObserve::class);
-            PurchaseReturn::observe(GlobalObserve::class);
-            Supplier::observe(GlobalObserve::class);
-            Customer::observe(GlobalObserve::class);
-        }
+        CashInOut::observe(GlobalObserve::class);
+        CashHistory::observe(GlobalObserve::class);
+        Category::observe(GlobalObserve::class);
+        Cost::observe(GlobalObserve::class);
+        CostCategory::observe(GlobalObserve::class);
+        Employee::observe(GlobalObserve::class);
+        EmployeeSalary::observe(GlobalObserve::class);
+        Leaf::observe(GlobalObserve::class);
+        Manufacturer::observe(GlobalObserve::class);
+        Medicine::observe(GlobalObserve::class);
+        PaymentMethod::observe(GlobalObserve::class);
+        Pharmacy::observe(GlobalObserve::class);
+        Plan::observe(GlobalObserve::class);
+        Sale::observe(GlobalObserve::class);
+        SalePayment::observe(GlobalObserve::class);
+        SaleReturn::observe(GlobalObserve::class);
+        Purchase::observe(GlobalObserve::class);
+        PurchasePayment::observe(GlobalObserve::class);
+        PurchaseReturn::observe(GlobalObserve::class);
+        Supplier::observe(GlobalObserve::class);
+        Customer::observe(GlobalObserve::class);
     }
 }
