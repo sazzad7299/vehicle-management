@@ -1,7 +1,7 @@
 name: Build and deploy
 on:
   push:
-    branches: [developer]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@developer
+        uses: actions/checkout@master
       - name: Install dependencies
         run: npm ci
       - name: Build dependencies
         run: npm run build
       - name: Archive production artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repository
-        uses: actions/checkout@developer
+        uses: actions/checkout@master
       - name: Download artifact
-        uses: actions/download-artifact@developer
+        uses: actions/download-artifact@master
         with: 
           name: dist
           path: dist
