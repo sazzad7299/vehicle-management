@@ -1,0 +1,25 @@
+name: Build and deploy
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy 🚀
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: path/to/artifact
+      - name: Sync files to hosting
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with: 
+          server: ftp.itsoftrain.com
+          username: sazzad7299@vehcal.itsoftrain.com
+          password: sazzad@7299
+          server-dir: /vehcal.itsoftrain.com/
