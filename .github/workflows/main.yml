@@ -1,4 +1,5 @@
 name: Build and deploy
+
 on:
   push:
     branches: [master]
@@ -8,18 +9,38 @@ jobs:
   deploy:
     name: Deploy 🚀
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Update Composer
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
           path: path/to/artifact
+
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with: 
+        with:
           server: ftp.itsoftrain.com
           username: sazzad7299@vehcal.itsoftrain.com
-          password: sazzad@7299
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /
