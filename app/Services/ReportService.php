@@ -111,7 +111,7 @@ class ReportService
         ];
         $medicine = Medicine::query();
         if (auth()->user()->pharmacy_id != null) {
-            $user = $user->where('pharmacy_id', auth()->user()->pharmacy_id);
+            $medicine = $medicine->where('pharmacy_id', auth()->user()->pharmacy_id);
         }
 
         $medicine = $medicine->count();
