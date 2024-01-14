@@ -1,9 +1,11 @@
 import pharmacy from './pharmacy';
+import Login from '@/components/auth/login.vue';
+import Register from '@/components/auth/register.vue';
 let routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/components/auth/login.vue'),
+        component: Login,
         meta: {
             title: 'Login',
             isGuest: true
@@ -12,7 +14,7 @@ let routes = [
     {
         path: '/register',
         name: 'register',
-        component: () => import('@/components/auth/register.vue'),
+        component:Register,
         meta: {
             title: 'Register',
             isGuest: true
@@ -64,19 +66,10 @@ let routes = [
             isGuest: true
         }
     },
-    // {
-    //     path: '/',
-    //     name: 'welcome',
-    //     component: () => import('../pages/terms-and-conditions.vue'),
-    //     meta: {
-    //         title: 'Welcome to Pharmacy',
-    //         isGuest: true
-    //     }
-    // },
+
     {
         path: '/',
         name: 'app',
-        // redirect: {name: 'dashboard'},
         component: () => import('../pages/app.vue'),
         meta: {
             title: 'AppLayout',
