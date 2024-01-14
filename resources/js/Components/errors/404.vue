@@ -32,10 +32,5 @@
 
 </template>
 <script setup>
-import useAuth from '../../composables/auth';
-
-const {loginForm, validationErrors, processing, submitLogin} = useAuth()
 </script>
-<style scoped>
-
-</style>
+<style></style>

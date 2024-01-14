@@ -66,14 +66,4 @@ router.afterEach((to) => {
   }
 });
 // Wildcard route for 404
-router.addRoute({
-    path: '/:pathMatch(.*)*',
-    name: 'notFound',
-         component: () => import('../components/errors/404.vue').default,
-        meta: {
-            title: '404',
-            isGuest: true
-        } // Replace with the actual component for your 404 page
-  });
-
 export default router;
