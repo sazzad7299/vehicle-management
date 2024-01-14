@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -23,8 +24,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-
+          node-version: '21.3.0'
+      - name: Clear Cache
+        run: |
+          rm -rf node_modules
+          rm -rf .vite
       - name: Install npm dependencies
         run: npm install
 
@@ -43,4 +47,3 @@ jobs:
           server: ftp.itsoftrain.com
           username: sazzad7299@vehcal.itsoftrain.com
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
