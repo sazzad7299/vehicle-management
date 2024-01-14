@@ -69,7 +69,7 @@ router.afterEach((to) => {
 router.addRoute({
     path: '/:pathMatch(.*)*',
     name: 'notFound',
-         component: () => import('../components/errors/404.vue'),
+         component: () => import('../components/errors/404.vue').default,
         meta: {
             title: '404',
             isGuest: true
