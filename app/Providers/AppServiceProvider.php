@@ -25,7 +25,6 @@ use App\Models\SaleReturn;
 use App\Models\Supplier;
 use App\Observers\GlobalObserve;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
