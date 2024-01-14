@@ -16,8 +16,6 @@ jobs:
         with:
           name: dist
           path: path/to/artifact
-      - name: Install Packages
-        run: composer install --no-dev
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
