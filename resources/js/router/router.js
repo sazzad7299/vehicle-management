@@ -66,12 +66,12 @@ router.afterEach((to) => {
   }
 });
 // Wildcard route for 404
-import NotFound from '@/components/errors/404.vue';
+// import NotFound from '@/components/errors/404.vue';
 
 router.addRoute({
   path: '/:pathMatch(.*)*',
   name: 'notFound',
-  component: NotFound,
+  component: () => import("@/components/errors/404.vue"),
   meta: {
     title: '404',
     isGuest: true
