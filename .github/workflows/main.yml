@@ -42,4 +42,4 @@ jobs:
         with:
           server: ftp.itsoftrain.com
           username: sazzad7299@vehcal.itsoftrain.com
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: sazzad@7299
