@@ -31,10 +31,6 @@ jobs:
           rm -rf .vite
       - name: Install npm dependencies
         run: npm install
-
-      - name: Build
-        run: npm run build
-
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -46,4 +42,4 @@ jobs:
         with:
           server: ftp.itsoftrain.com
           username: sazzad7299@vehcal.itsoftrain.com
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: sazzad@7299
