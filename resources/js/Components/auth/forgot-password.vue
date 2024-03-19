@@ -9,11 +9,11 @@
                             <span class="app-brand-logo demo">
                                 🚀
                             </span>
-                                <span class="app-brand-text demo text-body fw-bolder text-uppercase">My Pharmacity</span>
+                                <span class="app-brand-text demo text-body fw-bolder text-uppercase">IT SOFTRAIN</span>
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Pharmacity! 👋</h4>
+                        <h4 class="mb-2">My Viehicle Management!</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                         <form class="mb-3 fv-plugins-bootstrap5 fv-plugins-framework" @submit.prevent="submitForgotPassword">
